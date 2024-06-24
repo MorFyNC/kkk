@@ -20,28 +20,28 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Person> list = new List<Person>();
         public MainWindow()
         {
             InitializeComponent();
-            LstView.ItemsSource = DBManager.Get();
+            list.Add(new Person("Mike"));
+            LstView.ItemsSource = list;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var p = new Person();
-            p.Id = Guid.NewGuid().ToString();
-            p.Name = Name.Text;
-            DBManager.Add(p);
-            Name.Text = "";
-            LstView.ItemsSource = DBManager.Get();
+            var p = new Person(Name.Text);
+            if (Name.Text == "") return;
+            list.Add(p);
+            LstView.Items.Refresh();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var p = LstView.SelectedItem as Person;
             if (p == null) return;
-            DBManager.Remove(p);
-            LstView.ItemsSource = DBManager.Get();
+            list.Remove(p);
+            LstView.Items.Refresh();
         }
     }
 }
