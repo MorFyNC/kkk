@@ -43,5 +43,19 @@ namespace WpfApp2
             list.Remove(p);
             LstView.Items.Refresh();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var p = LstView.SelectedItem as Person;
+            if (p == null) return;
+            Add add = new Add(p);
+            add.ShowDialog();
+            if(add.DialogResult == true)
+            {
+                list.Remove(p);
+                list.Add(new Person(add.Name.Text) { Id = p.Id });
+                LstView.Items.Refresh();
+            }
+        }
     }
 }

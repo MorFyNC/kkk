@@ -12,6 +12,7 @@
                 <TextBox x:Name="Name" Width="100"></TextBox>
                 <Button Click="Button_Click" Margin="10 0 0 0" Padding="10 0">Add</Button>
                 <Button Click="Button_Click_1" Margin="10 0 0 0" Padding="10 0">Remove</Button>
+                <Button Margin="10 0 0 0" Padding="10 0" Click="Button_Click_2">Edit</Button>
             </StackPanel>
             
             <ListView x:Name="LstView">
